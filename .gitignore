@@ -1,0 +1,6 @@
+node_modules/
+.env
+bookings.json
+*.log
+npm-debug.log*
+.DS_Store
