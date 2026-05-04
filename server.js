@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 3001; // Changed to 3001 to avoid "Address already in use" error
+// 🚀 Use Render's dynamic port or default to 3001
+const PORT = process.env.PORT || 3001; 
 const DB_FILE = path.join(__dirname, 'bookings.json');
 
 // Initialize JSON file if it doesn't exist
@@ -19,7 +20,7 @@ app.use(express.json());
 
 // 1. Root
 app.get('/', (req, res) => {
-    res.send('VidyaShikhar API Running on Port 3001');
+    res.send('VidyaShikhar API Running in Production');
 });
 
 // 2. Submit Booking (POST /book-demo)
@@ -65,6 +66,6 @@ app.get('/bookings', (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Server on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Server listening on port ${PORT}`);
 });
